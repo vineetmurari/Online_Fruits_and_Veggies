@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.grid-container > div {
+  padding: 20px 0;
+}
+.top { display: inline;}
+
+
+</style>
+
+<script>
+
+var jsonele=[{"product":"Apple"},{"product":"Banana"},{"product":"Orange"},{"product":"Brinjal"},{"product":"Potato"}];
+var counter=0;
+var jsonele1 =[{"product":"Apple", "count":0, "price":5},{"product":"Banana","count":0,"price":3},{"product":"Orange","count":0,"price":5},{"product":"Brinjal","count":0,"price":5},{"product":"Potato","count":0,"price":5}];
+var tot_price = 0;
+
+function myFunction(e){
+var jsonobj =[];
+counter=counter+1;
+	var index=e.target.id;
+ 	document.getElementById("numberofitems").innerHTML=counter;
+	jsonele1[index].count=jsonele1[index].count+1;
+	var k=0;
+	for(i=0;i<5;i++){
+		if(jsonele1[i].count>0){
+		if(k==0){
+		jsonobj[0]=jsonele1[i];
+		}
+		else{
+			jsonobj[k]=jsonele1[i];
+			}
+		k=k+1;
+		}
+}
+
+sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
+	tot_price=0;
+	for(j=0;j<jsonobj.length;j++){
+		tot_price=tot_price+(jsonobj[j].count*jsonobj[j].price);
+		}
+		console.log(tot_price);
+		document.getElementById("priceamt").innerHTML =tot_price;
+
+	
+}
+</script>
+
+
+</head>
+<body>
+
+<h2 style="text-align:center">Fruits and Veggies</h2>
+<button type="button" class="top button">Logout</button>
+<button type="button" class="top button" onclick="window.location='checkOut.html'">Checkout</button> 
+<p class="top" id="numberofitems">0</p>
+<p class="top">Total items</p>
+<p class="top">Total Price : $</p>
+<p class="top" id ="priceamt">0</p>
+<div class="grid-container">
+<div class="card item item1">
+  <img src="img/Apple.png" style="width:80%">
+  <h1>Fresh Apple</h1>
+  <p class="price">$5</p>
+  <p>Fresh Apple from shimla</p>
+  <p><button id="0" onclick="myFunction(event)">Add to Cart</button></p>
+</div>
+
+<div class="card item item2">
+  <img src="img/banana.jpg" style="width:100%">
+  <h1>Banana</h1>
+  <p class="price">$3</p>
+  <p>Fresh and clean Banana bought directly from the plant</p>
+  <p><button id="1" onclick="myFunction(event)">Add to Cart</button></p>
+</div>
+
+<div class="card item item3">
+  <img src="img/Orange.jpg" style="width:75%">
+  <h1>Fresh Orange</h1>
+  <p class="price">$5</p>
+  <p>Clean Orange from Farm</p>
+  <p><button id="2" onclick="myFunction(event)">Add to Cart</button></p>
+</div>
+
+<div class="card item item4">
+  <img src="img/bringal.jpg" style="width:100%">
+  <h1>Brinjal</h1>
+  <p class="price">$5</p>
+  <p>Organic veggie - Brinjal</p>
+  <p><button id="3" onclick="myFunction(event)">Add to Cart</button></p>
+</div>
+
+<div class="card item item5">
+  <img src="img/potato.jpg" style="width:100%">
+  <h1>Fresh potato</h1>
+  <p class="price">$5</p>
+  <p>Organic veggie</p>
+  <p><button id="4" onclick="myFunction(event)">Add to Cart</button></p>
+</div>
+
+</div>
+
+
+</body></html>
