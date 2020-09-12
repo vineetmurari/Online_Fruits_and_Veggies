@@ -43,13 +43,18 @@ var tot_price=0;
 		tot_price=tot_price+(jsarr[j].count*jsarr[j].price);
 		}
 
+var tot_count =0
+		for(j=0;j<jsarr.length;j++){
+		tot_count=tot_count+jsarr[j].count;
+		}
+
 var products ="";
 for(j=0;j<jsarr.length;j++){
 		if(j==0){
- 		products=products+(jsarr[j].product);
+ 		products=products+(jsarr[j].product+"("+jsarr[j].count+")");
 }
 else{
-		products=products+", "+(jsarr[j].product);
+		products=products+", "+(jsarr[j].product+"("+jsarr[j].count+")");
 }
 		}
 
@@ -60,7 +65,7 @@ console.log(billing_json);
 
 document.getElementById("email").innerHTML ="Email: "+billing_json.email
 document.getElementById("Address").innerHTML ="Address: "+billing_json.address+", "+billing_json.city+", "+billing_json.state+", "+billing_json.zip;
-document.getElementById("TotalItems").innerHTML ="Products: "+products+" - "+jsarr.length
+document.getElementById("TotalItems").innerHTML ="Products: "+products+" - "+" Total "+tot_count;
 document.getElementById("cost").innerHTML ="Total Price: $"+tot_price;
 }
 
