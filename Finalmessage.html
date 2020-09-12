@@ -1,9 +1,85 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+div {
+  margin-bottom: 15px;
+  padding: 4px 12px;
+}
+
+.danger {
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+}
+
+.success {
+  background-color: #ddffdd;
+  border-left: 6px solid #4CAF50;
+}
+
+.orderdetails{
+background-color: lightgrey;
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+
+}
+</style>
+
+<script>
+function change_text_data(){
+jsarr=JSON.parse(sessionStorage.getItem("jsArray"))
+var tot_price=0;
+	for(j=0;j<jsarr.length;j++){
+		tot_price=tot_price+(jsarr[j].count*jsarr[j].price);
+		}
+
+var products ="";
+for(j=0;j<jsarr.length;j++){
+		if(j==0){
+ 		products=products+(jsarr[j].product);
+}
+else{
+		products=products+", "+(jsarr[j].product);
+}
+		}
+
+console.log(products);
+
+billing_json = JSON.parse(sessionStorage.getItem("billing_json"))
+console.log(billing_json);
+
+document.getElementById("email").innerHTML ="Email: "+billing_json.email
+document.getElementById("Address").innerHTML ="Address: "+billing_json.address+", "+billing_json.city+", "+billing_json.state+", "+billing_json.zip;
+document.getElementById("TotalItems").innerHTML ="Products: "+products+" - "+jsarr.length
+document.getElementById("cost").innerHTML ="Total Price: $"+tot_price;
+}
+
+window.onload=change_text_data;
+</script>
+
+
+</head>
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+<div class="success">
+  <p><strong>Success!</strong> your order placed.</p>
+</div>
+
+
+<h2>Order Details</h2>
+
+<div class ="orderdetails">
+<p id="email">Email@email.com </p>
+<p id="Address">street, city, zip	</p>
+<p id="TotalItems">p1, p2, p3 -0	</p>
+<p id="cost"> 0</p>
+</div>
+
+<button type ="button"> Logout</button>
+<button type ="button"> Home</button>
 
 </body>
 </html>
