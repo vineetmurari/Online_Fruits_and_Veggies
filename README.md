@@ -3,7 +3,7 @@
 Demo E-Commerce Website used only for Automation Testing and Web Scraping purposes.
 
 Download the Project ZIP to your computer, unzip the project and place it in the desired location, preferably on Desktop.
-Install Node.js version -v10.18.0 in your computer.
+Install Node.js version -v10.18.0 or Similar in your computer.
 
 Open command prompt or CMD or terminal
 
