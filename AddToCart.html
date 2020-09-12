@@ -48,6 +48,13 @@
 
 <script>
 
+function logout(){
+console.log('logout');
+sessionStorage.clear();
+window.location.href = "./index.html";
+}
+
+
 var jsonele=[{"product":"Apple"},{"product":"Banana"},{"product":"Orange"},{"product":"Brinjal"},{"product":"Potato"}];
 var counter=0;
 var jsonele1 =[{"product":"Apple", "count":0, "price":5},{"product":"Banana","count":0,"price":3},{"product":"Orange","count":0,"price":5},{"product":"Brinjal","count":0,"price":5},{"product":"Potato","count":0,"price":5}];
@@ -89,7 +96,7 @@ sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
 <body>
 
 <h2 style="text-align:center">Fruits and Veggies</h2>
-<button type="button" class="top button">Logout</button>
+<button type="button" class="top button" onclick="logout()">Logout</button>
 <button type="button" class="top button" onclick="window.location='checkOut.html'">Checkout</button> 
 <p class="top" id="numberofitems">0</p>
 <p class="top">Total items</p>

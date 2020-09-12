@@ -29,6 +29,13 @@ background-color: lightgrey;
 </style>
 
 <script>
+
+function logout(){
+console.log('logout');
+sessionStorage.clear();
+window.location.href = "./index.html";
+}
+
 function change_text_data(){
 jsarr=JSON.parse(sessionStorage.getItem("jsArray"))
 var tot_price=0;
@@ -78,8 +85,7 @@ window.onload=change_text_data;
 <p id="cost"> 0</p>
 </div>
 
-<button type ="button"> Logout</button>
-<button type ="button"> Home</button>
+<button type ="button" onclick="logout()"> Logout</button>
 
 </body>
 </html>
