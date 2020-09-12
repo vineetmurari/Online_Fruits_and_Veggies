@@ -60,6 +60,39 @@ var counter=0;
 var jsonele1 =[{"product":"Apple", "count":0, "price":5},{"product":"Banana","count":0,"price":3},{"product":"Orange","count":0,"price":5},{"product":"Brinjal","count":0,"price":5},{"product":"Potato","count":0,"price":5}];
 var tot_price = 0;
 
+
+function myFunction1(e){
+var index=e.target.id;
+if(document.getElementById("numberofitems").textContent!=0 && jsonele1[index].count!=0 ){
+var jsonobj =[];
+counter=counter-1;
+	if(jsonele1[index].count!=0){
+ 	document.getElementById("numberofitems").innerHTML=counter;
+	jsonele1[index].count=jsonele1[index].count-1;
+	var k=0;
+	for(i=0;i<5;i++){
+		if(jsonele1[i].count>0){
+		if(k==0){
+		jsonobj[0]=jsonele1[i];
+		}
+		else{
+			jsonobj[k]=jsonele1[i];
+			}
+		k=k+1;
+		}
+}
+
+sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
+	tot_price=0;
+	for(j=0;j<jsonobj.length;j++){
+		tot_price=tot_price+(jsonobj[j].count*jsonobj[j].price);
+		}
+		console.log(tot_price);
+		document.getElementById("priceamt").innerHTML =tot_price;
+}
+}
+}
+
 function myFunction(e){
 var jsonobj =[];
 counter=counter+1;
@@ -109,6 +142,7 @@ sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
   <p class="price">$5</p>
   <p>Fresh Apple from shimla</p>
   <p><button id="0" onclick="myFunction(event)">Add to Cart</button></p>
+  <p><button id="0" onclick="myFunction1(event)">Remove item</button></p>
 </div>
 
 <div class="card item item2">
@@ -117,6 +151,7 @@ sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
   <p class="price">$3</p>
   <p>Fresh and clean Banana bought directly from the plant</p>
   <p><button id="1" onclick="myFunction(event)">Add to Cart</button></p>
+  <p><button id="1" onclick="myFunction1(event)">Remove item</button></p>
 </div>
 
 <div class="card item item3">
@@ -125,6 +160,7 @@ sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
   <p class="price">$5</p>
   <p>Clean Orange from Farm</p>
   <p><button id="2" onclick="myFunction(event)">Add to Cart</button></p>
+   <p><button id="2" onclick="myFunction1(event)">Remove item</button></p>
 </div>
 
 <div class="card item item4">
@@ -133,6 +169,7 @@ sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
   <p class="price">$5</p>
   <p>Organic veggie - Brinjal</p>
   <p><button id="3" onclick="myFunction(event)">Add to Cart</button></p>
+  <p><button id="3" onclick="myFunction1(event)">Remove item</button></p>
 </div>
 
 <div class="card item item5">
@@ -141,6 +178,7 @@ sessionStorage.setItem("jsArray", JSON.stringify(jsonobj));
   <p class="price">$5</p>
   <p>Organic veggie</p>
   <p><button id="4" onclick="myFunction(event)">Add to Cart</button></p>
+  <p><button id="4" onclick="myFunction1(event)">Remove item</button></p>
 </div>
 
 </div>
